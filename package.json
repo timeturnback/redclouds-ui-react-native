@@ -1,5 +1,5 @@
 {
-  "name": "@redcloudsteam/redcloudsui-react-native",
+  "name": "@redcloudsteam/ui-rn",
   "version": "0.2.0",
   "description": "test",
   "main": "lib/commonjs/index",
