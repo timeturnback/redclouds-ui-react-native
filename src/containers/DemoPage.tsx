@@ -30,7 +30,7 @@ export function DemoPage() {
             <Text text="Text" />
           </ComponentCard>
           <ComponentCard title="TextField">
-            <TextField text="TextField" />
+            <TextField />
           </ComponentCard>
           <ComponentCard title="AutoImage">
             <AutoImage

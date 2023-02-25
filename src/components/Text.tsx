@@ -32,11 +32,15 @@ export function Text(props: TextProps) {
 
   const content = text || children;
 
-  const preset: Presets = $presets[props.preset] ? props.preset : 'default';
+  const preset: Presets = props.preset
+    ? $presets[props.preset]
+      ? props.preset
+      : 'default'
+    : 'default';
   const $styles = [
     $presets[preset],
-    $fontWeightStyles[weight],
-    $sizeStyles[size],
+    weight ? $fontWeightStyles[weight] : undefined,
+    size ? $sizeStyles[size] : undefined,
     $styleOverride,
   ];
 

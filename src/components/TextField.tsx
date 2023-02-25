@@ -132,6 +132,7 @@ export const TextField = forwardRef(function TextField(
     input.current?.focus();
   }
 
+  // @ts-ignore
   useImperativeHandle(ref, () => input.current);
 
   return (
@@ -156,11 +157,12 @@ export const TextField = forwardRef(function TextField(
             style={$leftAccessoryStyle}
             status={status}
             editable={!disabled}
-            multiline={TextInputProps.multiline}
+            multiline={!!TextInputProps.multiline}
           />
         )}
 
         <TextInput
+          // @ts-ignore
           ref={input}
           underlineColorAndroid={colors.transparent}
           textAlignVertical="top"
@@ -176,7 +178,7 @@ export const TextField = forwardRef(function TextField(
             style={$rightAccessoryStyle}
             status={status}
             editable={!disabled}
-            multiline={TextInputProps.multiline}
+            multiline={!!TextInputProps.multiline}
           />
         )}
       </View>

@@ -18,9 +18,7 @@ export interface ButtonAccessoryProps {
 }
 
 export interface ButtonProps extends PressableProps {
-  tx?: TextProps['tx'];
   text?: TextProps['text'];
-  txOptions?: TextProps['txOptions'];
   style?: StyleProp<ViewStyle>;
   pressedStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
@@ -33,9 +31,7 @@ export interface ButtonProps extends PressableProps {
 
 export function Button(props: ButtonProps) {
   const {
-    tx,
     text,
-    txOptions,
     style: $viewStyleOverride,
     pressedStyle: $pressedViewStyleOverride,
     textStyle: $textStyleOverride,
@@ -46,15 +42,19 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props;
 
-  const preset: Presets = $viewPresets[props.preset] ? props.preset : 'default';
-  function $viewStyle({ pressed }) {
+  const preset: Presets = props.preset
+    ? $viewPresets[props.preset]
+      ? props.preset
+      : 'default'
+    : 'default';
+  function $viewStyle({ pressed }: { pressed: any }) {
     return [
       $viewPresets[preset],
       $viewStyleOverride,
       !!pressed && [$pressedViewPresets[preset], $pressedViewStyleOverride],
     ];
   }
-  function $textStyle({ pressed }) {
+  function $textStyle({ pressed }: { pressed: any }) {
     return [
       $textPresets[preset],
       $textStyleOverride,
@@ -70,12 +70,7 @@ export function Button(props: ButtonProps) {
             <LeftAccessory style={$leftAccessoryStyle} pressableState={state} />
           )}
 
-          <Text
-            tx={tx}
-            text={text}
-            txOptions={txOptions}
-            style={$textStyle(state)}
-          >
+          <Text text={text} style={$textStyle(state)}>
             {children}
           </Text>
 

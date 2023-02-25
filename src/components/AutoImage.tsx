@@ -57,7 +57,7 @@ export function useAutoImage(
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-AutoImage.md)
  */
 export function AutoImage(props: AutoImageProps) {
-  const { maxWidth, maxHeight, ...ImageProps } = props;
+  const { maxWidth = 0, maxHeight = 0, ...ImageProps } = props;
   const source = props.source as ImageURISource;
 
   const [width, height] = useAutoImage(

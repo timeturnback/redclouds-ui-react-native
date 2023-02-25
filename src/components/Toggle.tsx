@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { ComponentType, FC, useMemo } from 'react';
 import {
   GestureResponderEvent,

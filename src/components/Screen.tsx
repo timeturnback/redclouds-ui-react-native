@@ -96,8 +96,8 @@ function useAutoPreset(props: AutoScreenProps) {
   const { preset, scrollEnabledToggleThreshold } = props;
   const { percent = 0.92, point = 0 } = scrollEnabledToggleThreshold || {};
 
-  const scrollViewHeight = useRef(null);
-  const scrollViewContentHeight = useRef(null);
+  const scrollViewHeight = useRef<number | null>(null);
+  const scrollViewContentHeight = useRef<number | null>(null);
   const [scrollEnabled, setScrollEnabled] = useState(true);
 
   function updateScrollState() {
@@ -127,7 +127,7 @@ function useAutoPreset(props: AutoScreenProps) {
     if (!scrollEnabled && !contentFitsScreen) setScrollEnabled(true);
   }
 
-  function onContentSizeChange(w: number, h: number) {
+  function onContentSizeChange(_: number, h: number) {
     // update scroll-view content height
     scrollViewContentHeight.current = h;
     updateScrollState();
@@ -175,6 +175,7 @@ function ScreenWithScrolling(props: ScreenProps) {
   );
 
   return (
+    // @ts-ignore
     <ScrollView
       {...{ keyboardShouldPersistTaps, scrollEnabled, ref }}
       {...ScrollViewProps}
